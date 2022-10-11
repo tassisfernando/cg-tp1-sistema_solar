@@ -6,10 +6,10 @@
 	<stdlib.h>
 	<math.h>
 
-1426360528 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\glut.h
+1661537396 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\glut.h
 	"freeglut_std.h"
 
-1426360528 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\freeglut_std.h
+1661537396 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\freeglut_std.h
 	<windows.h>
 	<EGL/egl.h>
 	<GLES/gl.h>
@@ -898,4 +898,11 @@
 
 1526093416 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\math.h
 	<crtdefs.h>
+
+1665515183 source:c:\users\dti digital\faculdade\cg-tp1-sistema_solar\main.cpp
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
 

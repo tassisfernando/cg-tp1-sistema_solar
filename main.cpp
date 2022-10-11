@@ -51,6 +51,8 @@ int win = 250;
 
 bool stopAnimate = true;
 
+bool showOrbit = true;
+
 void DesenhaSatelite() {
     int vertices = 30;
     float raio = 1.5f;
@@ -107,16 +109,19 @@ void DesenhaNetuno() {
     glPushMatrix();
         DesenhaOrbita(200.0f);
     glPopMatrix();
-
     glPushMatrix();
-        glTranslatef(-200, 0, 0.0f);
-        DesenhaAstro(11.0f, 0.1f, 0.1f, 0.9f);
-        DesenhaOrbita(17.0f);
+        glRotatef(ang1/64, 0.0f, 0.0f, 1.0f);
+        glPushMatrix();
+            glTranslatef(-200, 0, 0.0f);
+            glRotatef(ang1*18, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(11.0f, 0.1f, 0.1f, 0.9f);
+            DesenhaOrbita(17.0f);
 
-        glTranslatef(-15, 0, 0.0f);
-        DesenhaSatelite();
-        glTranslatef(15, 0, 0.0f);
-        DesenhaSatelite();
+            glTranslatef(17, 0, 0.0f);
+            DesenhaSatelite();
+            glTranslatef(-34, 0, 0.0f);
+            DesenhaSatelite();
+        glPopMatrix();
     glPopMatrix();
 }
 
@@ -124,15 +129,18 @@ void DesenhaUrano() {
     glPushMatrix();
         DesenhaOrbita(175.0f);
     glPopMatrix();
-
     glPushMatrix();
-        glTranslatef(175, 0, 0.0f);
-        DesenhaAstro(12.0f, 0.5f, 0.6f, 0.0f);
-        DesenhaOrbita(15.0f);
-        DesenhaOrbita(17.0f);
+        glRotatef(ang1/32, 0.0f, 0.0f, 1.0f);
+        glPushMatrix();
+            glTranslatef(175, 0, 0.0f);
+            glRotatef(ang1*18, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(12.0f, 0.5f, 0.6f, 0.0f);
+            DesenhaOrbita(15.0f);
+            DesenhaOrbita(17.0f);
 
-        glTranslatef(15, 0, 0.0f);
-        DesenhaSatelite();
+            glTranslatef(15, 0, 0.0f);
+            DesenhaSatelite();
+        glPopMatrix();
     glPopMatrix();
 }
 
@@ -140,17 +148,20 @@ void DesenhaSaturno() {
     glPushMatrix();
         DesenhaOrbita(150.0f);
     glPopMatrix();
-
     glPushMatrix();
-        glTranslatef(-150, 0, 0.0f);
-        DesenhaAstro(10.0f, 0.5f, 0.1f, 0.5f);
-        DesenhaOrbita(15.0f);
-        DesenhaOrbita(17.0f);
-        DesenhaOrbita(19.0f);
-        DesenhaOrbita(21.0f);
+        glRotatef(ang1/24, 0.0f, 0.0f, 1.0f);
+        glPushMatrix();
+            glTranslatef(-150, 0, 0.0f);
+            glRotatef(ang1*21, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(10.0f, 0.5f, 0.1f, 0.5f);
+            DesenhaOrbita(15.0f);
+            DesenhaOrbita(17.0f);
+            DesenhaOrbita(19.0f);
+            DesenhaOrbita(21.0f);
 
-        glTranslatef(15, 0, 0.0f);
-        DesenhaSatelite();
+            glTranslatef(17, 0, 0.0f);
+            DesenhaSatelite();
+        glPopMatrix();
     glPopMatrix();
 }
 
@@ -158,14 +169,17 @@ void DesenhaJupiter() {
     glPushMatrix();
         DesenhaOrbita(125.0f);
     glPopMatrix();
-
     glPushMatrix();
-        glTranslatef(125, 0, 0.0f);
-        DesenhaAstro(14.0f, 1.0f, 0.5f, 0.5f);
-        DesenhaOrbita(19.0f);
+        glRotatef(ang1/16, 0.0f, 0.0f, 1.0f);
+        glPushMatrix();
+            glTranslatef(125, 0, 0.0f);
+            glRotatef(ang1*20, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(14.0f, 1.0f, 0.5f, 0.5f);
+            DesenhaOrbita(19.0f);
 
-        glTranslatef(15, 0, 0.0f);
-        DesenhaSatelite();
+            glTranslatef(19, 0, 0.0f);
+            DesenhaSatelite();
+        glPopMatrix();
     glPopMatrix();
 }
 
@@ -173,15 +187,18 @@ void DesenhaMarte() {
     glPushMatrix();
         DesenhaOrbita(100.0f);
     glPopMatrix();
-
     glPushMatrix();
-        glTranslatef(-100, 0, 0.0f);
-        DesenhaAstro(7.0f, 1.0f, 0.0f, 0.0f);
+        glRotatef(ang1/2, 0.0f, 0.0f, 1.0f);
+        glPushMatrix();
+            glTranslatef(-100, 0, 0.0f);
+            glRotatef(ang1*16, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(7.0f, 1.0f, 0.0f, 0.0f);
 
-        glTranslatef(-15, 0, 0.0f);
-        DesenhaSatelite();
-        glTranslatef(15, 0, 0.0f);
-        DesenhaSatelite();
+            glTranslatef(13, 0, 0.0f);
+            DesenhaSatelite();
+            glTranslatef(-26, 0, 0.0f);
+            DesenhaSatelite();
+        glPopMatrix();
     glPopMatrix();
 }
 
@@ -189,13 +206,16 @@ void DesenhaTerra() {
     glPushMatrix();
         DesenhaOrbita(75.0f);
     glPopMatrix();
-
+    glPushMatrix();
+        glRotatef(ang1, 0.0f, 0.0f, 1.0f);
     glPushMatrix();
         glTranslatef(75, 0, 0.0f);
+        glRotatef(ang1*16, 0.0f, 0.0f, 1.0f);
         DesenhaAstro(9.0f, 0.0f, 0.0f, 1.0f);
 
         glTranslatef(15, 0, 0.0f);
         DesenhaSatelite();
+    glPopMatrix();
     glPopMatrix();
 }
 
@@ -203,26 +223,33 @@ void DesenhaVenus() {
     glPushMatrix();
         DesenhaOrbita(50.0f);
     glPopMatrix();
-
     glPushMatrix();
-        glTranslatef(-50, 0, 0.0f);
-        DesenhaAstro(7.0f, 1.0f, 0.0f, 1.0f);
+        glRotatef(ang1*2, 0.0f, 0.0f, 1.0f);
+        glPushMatrix();
+            glTranslatef(-50, 0, 0.0f);
+            glRotatef(ang1*2, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(7.0f, 1.0f, 0.0f, 1.0f);
+        glPopMatrix();
     glPopMatrix();
 }
 
 void DesenhaMercurio() {
     glPushMatrix();
-        DesenhaOrbita(25.0f);
+        DesenhaOrbita(30.0f);
     glPopMatrix();
-
     glPushMatrix();
-        glTranslatef(25, 0, 0.0f);
-        DesenhaAstro(5.0f, 1.0f, 0.0f, 0.5f);
+        glRotatef(ang1*4, 0.0f, 0.0f, 1.0f);
+        glPushMatrix();
+            glTranslatef(30, 0, 0.0f);
+            glRotatef(ang1*5, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(5.0f, 1.0f, 0.0f, 0.5f);
+        glPopMatrix();
     glPopMatrix();
 }
 
 void DesenhaSol() {
     glPushMatrix();
+        glRotatef(ang1, 0.0f, 0.0f, 1.0f);
         DesenhaAstro(20.0f, 1.0f, 1.0f, 0.0f);
     glPopMatrix();
 }
@@ -287,11 +314,11 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h)
 	// superior) mantendo a propor��o com a janela de visualiza��o
 	if (largura <= altura)
 	{
-		gluOrtho2D (-200.0f, 200.0f, -200.0f*altura/largura, 200.0f*altura/largura);
+		gluOrtho2D (-250.0f, 250.0f, -250.0f*altura/largura, 250.0f*altura/largura);
 	}
 	else
 	{
-		gluOrtho2D (-200.0f*largura/altura, 200.0f*largura/altura, -200.0f, 200.0f);
+		gluOrtho2D (-250.0f*largura/altura, 250.0f*largura/altura, -250.0f, 250.0f);
 	}
 }
 
@@ -324,9 +351,16 @@ void Teclado (unsigned char key, int x, int y)
 	if (key == 27)
 		exit(0);
 
-    if (key == 80 || key == 112){
+    if (key == 'p'){
         stopAnimate = !stopAnimate;
         if(stopAnimate){
+            glutTimerFunc(10, Anima, 1);
+        }
+    }
+
+    if (key == 'm'){
+        showOrbit = !showOrbit;
+        if(showOrbit){
             glutTimerFunc(10, Anima, 1);
         }
     }
