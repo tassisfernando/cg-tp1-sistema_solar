@@ -51,6 +51,24 @@ int win = 250;
 
 bool stopAnimate = true;
 
+void DesenhaSatelite() {
+    int vertices = 30;
+    float raio = 1.5f;
+	glColor3f(1.0f, 1.0f, 1.0f);
+
+    // Desenha circulo
+	float angulo, incremento;
+
+	incremento = (2 * M_PI) / vertices;
+
+	glBegin(GL_POLYGON);
+     for(angulo=0; angulo<2*M_PI; angulo+=incremento){
+        glVertex2f(raio*cos(angulo),raio*sin(angulo));
+        glVertex2d(raio*cos(angulo+incremento), raio*sin(angulo+incremento));
+     }
+    glEnd();
+}
+
 void DesenhaAstro(float raio, GLfloat red, GLfloat green, GLfloat blue) {
     int vertices = 30;
 	glColor3f(red, green, blue);
@@ -93,6 +111,12 @@ void DesenhaNetuno() {
     glPushMatrix();
         glTranslatef(-200, 0, 0.0f);
         DesenhaAstro(11.0f, 0.1f, 0.1f, 0.9f);
+        DesenhaOrbita(17.0f);
+
+        glTranslatef(-15, 0, 0.0f);
+        DesenhaSatelite();
+        glTranslatef(15, 0, 0.0f);
+        DesenhaSatelite();
     glPopMatrix();
 }
 
@@ -104,6 +128,11 @@ void DesenhaUrano() {
     glPushMatrix();
         glTranslatef(175, 0, 0.0f);
         DesenhaAstro(12.0f, 0.5f, 0.6f, 0.0f);
+        DesenhaOrbita(15.0f);
+        DesenhaOrbita(17.0f);
+
+        glTranslatef(15, 0, 0.0f);
+        DesenhaSatelite();
     glPopMatrix();
 }
 
@@ -115,6 +144,13 @@ void DesenhaSaturno() {
     glPushMatrix();
         glTranslatef(-150, 0, 0.0f);
         DesenhaAstro(10.0f, 0.5f, 0.1f, 0.5f);
+        DesenhaOrbita(15.0f);
+        DesenhaOrbita(17.0f);
+        DesenhaOrbita(19.0f);
+        DesenhaOrbita(21.0f);
+
+        glTranslatef(15, 0, 0.0f);
+        DesenhaSatelite();
     glPopMatrix();
 }
 
@@ -126,6 +162,10 @@ void DesenhaJupiter() {
     glPushMatrix();
         glTranslatef(125, 0, 0.0f);
         DesenhaAstro(14.0f, 1.0f, 0.5f, 0.5f);
+        DesenhaOrbita(19.0f);
+
+        glTranslatef(15, 0, 0.0f);
+        DesenhaSatelite();
     glPopMatrix();
 }
 
@@ -137,6 +177,11 @@ void DesenhaMarte() {
     glPushMatrix();
         glTranslatef(-100, 0, 0.0f);
         DesenhaAstro(7.0f, 1.0f, 0.0f, 0.0f);
+
+        glTranslatef(-15, 0, 0.0f);
+        DesenhaSatelite();
+        glTranslatef(15, 0, 0.0f);
+        DesenhaSatelite();
     glPopMatrix();
 }
 
@@ -148,6 +193,9 @@ void DesenhaTerra() {
     glPushMatrix();
         glTranslatef(75, 0, 0.0f);
         DesenhaAstro(9.0f, 0.0f, 0.0f, 1.0f);
+
+        glTranslatef(15, 0, 0.0f);
+        DesenhaSatelite();
     glPopMatrix();
 }
 
