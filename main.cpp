@@ -19,6 +19,7 @@
 #include <GL/glut.h>
 #endif
 
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -52,6 +53,24 @@ int win = 250;
 bool stopAnimate = true;
 
 bool showOrbit = true;
+
+bool showMercury = true;
+
+bool showVenus = true;
+
+bool showEarth = true;
+
+bool showMars = true;
+
+bool showJupiter = true;
+
+bool showSaturn = true;
+
+bool showUranus = true;
+
+bool showNeptune = true;
+
+bool showSun = true;
 
 void DesenhaSatelite() {
     int vertices = 30;
@@ -106,152 +125,186 @@ void DesenhaOrbita(float raio) {
 }
 
 void DesenhaNetuno() {
-    glPushMatrix();
-        DesenhaOrbita(200.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1/64, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
         glPushMatrix();
-            glTranslatef(-200, 0, 0.0f);
-            glRotatef(ang1*18, 0.0f, 0.0f, 1.0f);
-            DesenhaAstro(11.0f, 0.1f, 0.1f, 0.9f);
-            DesenhaOrbita(17.0f);
-
-            glTranslatef(17, 0, 0.0f);
-            DesenhaSatelite();
-            glTranslatef(-34, 0, 0.0f);
-            DesenhaSatelite();
+            DesenhaOrbita(200.0f);
         glPopMatrix();
-    glPopMatrix();
+    }
+    if(showNeptune) {
+        glPushMatrix();
+            glRotatef(ang1/64, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(-200, 0, 0.0f);
+                glRotatef(ang1*18, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(11.0f, 0.1f, 0.1f, 0.9f);
+                DesenhaOrbita(17.0f);
+
+                glTranslatef(17, 0, 0.0f);
+                DesenhaSatelite();
+                glTranslatef(-34, 0, 0.0f);
+                DesenhaSatelite();
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaUrano() {
-    glPushMatrix();
-        DesenhaOrbita(175.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1/32, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
         glPushMatrix();
-            glTranslatef(175, 0, 0.0f);
-            glRotatef(ang1*18, 0.0f, 0.0f, 1.0f);
-            DesenhaAstro(12.0f, 0.5f, 0.6f, 0.0f);
-            DesenhaOrbita(15.0f);
-            DesenhaOrbita(17.0f);
-
-            glTranslatef(15, 0, 0.0f);
-            DesenhaSatelite();
+            DesenhaOrbita(175.0f);
         glPopMatrix();
-    glPopMatrix();
+    }
+    if(showUranus) {
+        glPushMatrix();
+            glRotatef(ang1/32, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(175, 0, 0.0f);
+                glRotatef(ang1*18, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(12.0f, 0.5f, 0.6f, 0.0f);
+                DesenhaOrbita(15.0f);
+                DesenhaOrbita(17.0f);
+
+                glTranslatef(15, 0, 0.0f);
+                DesenhaSatelite();
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaSaturno() {
-    glPushMatrix();
-        DesenhaOrbita(150.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1/24, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
         glPushMatrix();
-            glTranslatef(-150, 0, 0.0f);
-            glRotatef(ang1*21, 0.0f, 0.0f, 1.0f);
-            DesenhaAstro(10.0f, 0.5f, 0.1f, 0.5f);
-            DesenhaOrbita(15.0f);
-            DesenhaOrbita(17.0f);
-            DesenhaOrbita(19.0f);
-            DesenhaOrbita(21.0f);
-
-            glTranslatef(17, 0, 0.0f);
-            DesenhaSatelite();
+            DesenhaOrbita(150.0f);
         glPopMatrix();
-    glPopMatrix();
+    }
+    if(showSaturn) {
+        glPushMatrix();
+            glRotatef(ang1/24, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(-150, 0, 0.0f);
+                glRotatef(ang1*21, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(10.0f, 0.5f, 0.1f, 0.5f);
+                DesenhaOrbita(15.0f);
+                DesenhaOrbita(17.0f);
+                DesenhaOrbita(19.0f);
+                DesenhaOrbita(21.0f);
+
+                glTranslatef(17, 0, 0.0f);
+                DesenhaSatelite();
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaJupiter() {
-    glPushMatrix();
-        DesenhaOrbita(125.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1/16, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
         glPushMatrix();
-            glTranslatef(125, 0, 0.0f);
-            glRotatef(ang1*20, 0.0f, 0.0f, 1.0f);
-            DesenhaAstro(14.0f, 1.0f, 0.5f, 0.5f);
-            DesenhaOrbita(19.0f);
-
-            glTranslatef(19, 0, 0.0f);
-            DesenhaSatelite();
+            DesenhaOrbita(125.0f);
         glPopMatrix();
-    glPopMatrix();
+    }
+    if(showJupiter) {
+        glPushMatrix();
+            glRotatef(ang1/16, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(125, 0, 0.0f);
+                glRotatef(ang1*20, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(14.0f, 1.0f, 0.5f, 0.5f);
+                DesenhaOrbita(19.0f);
+
+                glTranslatef(19, 0, 0.0f);
+                DesenhaSatelite();
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaMarte() {
-    glPushMatrix();
-        DesenhaOrbita(100.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1/2, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
         glPushMatrix();
-            glTranslatef(-100, 0, 0.0f);
-            glRotatef(ang1*16, 0.0f, 0.0f, 1.0f);
-            DesenhaAstro(7.0f, 1.0f, 0.0f, 0.0f);
-
-            glTranslatef(13, 0, 0.0f);
-            DesenhaSatelite();
-            glTranslatef(-26, 0, 0.0f);
-            DesenhaSatelite();
+            DesenhaOrbita(100.0f);
         glPopMatrix();
-    glPopMatrix();
+    }
+    if(showMars) {
+        glPushMatrix();
+            glRotatef(ang1/2, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(-100, 0, 0.0f);
+                glRotatef(ang1*16, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(7.0f, 1.0f, 0.0f, 0.0f);
+
+                glTranslatef(13, 0, 0.0f);
+                DesenhaSatelite();
+                glTranslatef(-26, 0, 0.0f);
+                DesenhaSatelite();
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaTerra() {
-    glPushMatrix();
-        DesenhaOrbita(75.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1, 0.0f, 0.0f, 1.0f);
-    glPushMatrix();
-        glTranslatef(75, 0, 0.0f);
-        glRotatef(ang1*16, 0.0f, 0.0f, 1.0f);
-        DesenhaAstro(9.0f, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
+        glPushMatrix();
+            DesenhaOrbita(75.0f);
+        glPopMatrix();
+    }
+    if(showEarth) {
+        glPushMatrix();
+            glRotatef(ang1, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(75, 0, 0.0f);
+                glRotatef(ang1*16, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(9.0f, 0.0f, 0.0f, 1.0f);
 
-        glTranslatef(15, 0, 0.0f);
-        DesenhaSatelite();
-    glPopMatrix();
-    glPopMatrix();
+                glTranslatef(15, 0, 0.0f);
+                DesenhaSatelite();
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaVenus() {
-    glPushMatrix();
-        DesenhaOrbita(50.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1*2, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
         glPushMatrix();
-            glTranslatef(-50, 0, 0.0f);
-            glRotatef(ang1*2, 0.0f, 0.0f, 1.0f);
-            DesenhaAstro(7.0f, 1.0f, 0.0f, 1.0f);
+            DesenhaOrbita(50.0f);
         glPopMatrix();
-    glPopMatrix();
+    }
+    if(showVenus) {
+        glPushMatrix();
+            glRotatef(ang1*2, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(-50, 0, 0.0f);
+                glRotatef(ang1*2, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(7.0f, 1.0f, 0.0f, 1.0f);
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaMercurio() {
-    glPushMatrix();
-        DesenhaOrbita(30.0f);
-    glPopMatrix();
-    glPushMatrix();
-        glRotatef(ang1*4, 0.0f, 0.0f, 1.0f);
+    if(showOrbit) {
         glPushMatrix();
-            glTranslatef(30, 0, 0.0f);
-            glRotatef(ang1*5, 0.0f, 0.0f, 1.0f);
-            DesenhaAstro(5.0f, 1.0f, 0.0f, 0.5f);
+            DesenhaOrbita(30.0f);
         glPopMatrix();
-    glPopMatrix();
+    }
+    if(showMercury) {
+        glPushMatrix();
+            glRotatef(ang1*4, 0.0f, 0.0f, 1.0f);
+            glPushMatrix();
+                glTranslatef(30, 0, 0.0f);
+                glRotatef(ang1*5, 0.0f, 0.0f, 1.0f);
+                DesenhaAstro(5.0f, 1.0f, 0.0f, 0.5f);
+            glPopMatrix();
+        glPopMatrix();
+    }
 }
 
 void DesenhaSol() {
-    glPushMatrix();
-        glRotatef(ang1, 0.0f, 0.0f, 1.0f);
-        DesenhaAstro(20.0f, 1.0f, 1.0f, 0.0f);
-    glPopMatrix();
+    if(showSun) {
+        glPushMatrix();
+            glRotatef(ang1, 0.0f, 0.0f, 1.0f);
+            DesenhaAstro(20.0f, 1.0f, 1.0f, 0.0f);
+        glPopMatrix();
+    }
 }
 
 // Fun��o callback de redesenho da janela de visualiza��o
@@ -325,22 +378,11 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h)
 // Fun��o callback chamada pela GLUT a cada intervalo de tempo
 void Anima(int value)
 {
-	// Muda a dire��o quando chega na borda esquerda ou direita
-	if( (Tx+maxX) > windowXmax || (Tx+minX) < windowXmin )
-		xStep = -xStep;
-
-	// Muda a dire��o quando chega na borda superior ou inferior
-	if( (Ty+maxY) > windowYmax || (Ty+minY) < windowYmin )
-		yStep = -yStep;
-
-	// Move a casinha
-	Tx += xStep;
-	Ty += yStep;
 
     ang1 += 0.5;
 
-	// Redesenha a casinha em outra posi��o
 	glutPostRedisplay();
+
 	if(stopAnimate)
         glutTimerFunc(10,Anima, 1);
 }
@@ -358,11 +400,35 @@ void Teclado (unsigned char key, int x, int y)
         }
     }
 
-    if (key == 'm'){
+    if (key == 'o'){
         showOrbit = !showOrbit;
-        if(showOrbit){
-            glutTimerFunc(10, Anima, 1);
-        }
+    }
+    if (key == 'm'){
+        showMercury = !showMercury;
+    }
+    if (key == 'v'){
+        showVenus = !showVenus;
+    }
+    if (key == 't'){
+        showEarth = !showEarth;
+    }
+    if (key == 'a'){
+        showMars = !showMars;
+    }
+    if (key == 'j'){
+        showJupiter = !showJupiter;
+    }
+    if (key == 's'){
+        showSaturn = !showSaturn;
+    }
+    if (key == 'u'){
+        showUranus = !showUranus;
+    }
+    if (key == 'n'){
+        showNeptune = !showNeptune;
+    }
+    if (key == 'x'){
+        showSun = !showSun;
     }
 }
 
