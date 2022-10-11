@@ -51,8 +51,7 @@ int win = 250;
 
 bool stopAnimate = true;
 
-
-void DesenhaAstro(int raio, GLfloat red, GLfloat green, GLfloat blue) {
+void DesenhaAstro(float raio, GLfloat red, GLfloat green, GLfloat blue) {
     int vertices = 30;
 	glColor3f(red, green, blue);
 
@@ -69,8 +68,115 @@ void DesenhaAstro(int raio, GLfloat red, GLfloat green, GLfloat blue) {
     glEnd();
 }
 
-void DesenhaOrbita(int raio) {
+void DesenhaOrbita(float raio) {
+    int vertices = 100;
+    glColor3f(1.0f, 1.0f, 1.0f);
 
+    // Desenha circulo
+	float angulo, incremento;
+
+	incremento = (2 * M_PI) / vertices;
+
+	glBegin(GL_LINES);
+     for(angulo=0; angulo<2*M_PI; angulo+=incremento){
+        glVertex2f(raio*cos(angulo),raio*sin(angulo));
+        glVertex2d(raio*cos(angulo+incremento), raio*sin(angulo+incremento));
+     }
+    glEnd();
+}
+
+void DesenhaNetuno() {
+    glPushMatrix();
+        DesenhaOrbita(200.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(-200, 0, 0.0f);
+        DesenhaAstro(11.0f, 0.1f, 0.1f, 0.9f);
+    glPopMatrix();
+}
+
+void DesenhaUrano() {
+    glPushMatrix();
+        DesenhaOrbita(175.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(175, 0, 0.0f);
+        DesenhaAstro(12.0f, 0.5f, 0.6f, 0.0f);
+    glPopMatrix();
+}
+
+void DesenhaSaturno() {
+    glPushMatrix();
+        DesenhaOrbita(150.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(-150, 0, 0.0f);
+        DesenhaAstro(10.0f, 0.5f, 0.1f, 0.5f);
+    glPopMatrix();
+}
+
+void DesenhaJupiter() {
+    glPushMatrix();
+        DesenhaOrbita(125.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(125, 0, 0.0f);
+        DesenhaAstro(14.0f, 1.0f, 0.5f, 0.5f);
+    glPopMatrix();
+}
+
+void DesenhaMarte() {
+    glPushMatrix();
+        DesenhaOrbita(100.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(-100, 0, 0.0f);
+        DesenhaAstro(7.0f, 1.0f, 0.0f, 0.0f);
+    glPopMatrix();
+}
+
+void DesenhaTerra() {
+    glPushMatrix();
+        DesenhaOrbita(75.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(75, 0, 0.0f);
+        DesenhaAstro(9.0f, 0.0f, 0.0f, 1.0f);
+    glPopMatrix();
+}
+
+void DesenhaVenus() {
+    glPushMatrix();
+        DesenhaOrbita(50.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(-50, 0, 0.0f);
+        DesenhaAstro(7.0f, 1.0f, 0.0f, 1.0f);
+    glPopMatrix();
+}
+
+void DesenhaMercurio() {
+    glPushMatrix();
+        DesenhaOrbita(25.0f);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(25, 0, 0.0f);
+        DesenhaAstro(5.0f, 1.0f, 0.0f, 0.5f);
+    glPopMatrix();
+}
+
+void DesenhaSol() {
+    glPushMatrix();
+        DesenhaAstro(20.0f, 1.0f, 1.0f, 0.0f);
+    glPopMatrix();
 }
 
 // Fun��o callback de redesenho da janela de visualiza��o
@@ -89,8 +195,23 @@ void DesenhaSistemaSolar(void)
 	//glTranslatef(Tx, Ty, 0.0f);
     //glRotatef(ang1,0.0f,0.0f,1.0f);
 
-	// Desenha o sol
-	DesenhaAstro(4, 1.0f, 1.0f, 0.0f);
+    DesenhaSol();
+
+    DesenhaMercurio();
+
+    DesenhaVenus();
+
+    DesenhaTerra();
+
+    DesenhaMarte();
+
+    DesenhaJupiter();
+
+    DesenhaSaturno();
+
+    DesenhaUrano();
+
+    DesenhaNetuno();
 
 	// Executa os comandos OpenGL
 	glutSwapBuffers();
@@ -118,19 +239,11 @@ void AlteraTamanhoJanela(GLsizei w, GLsizei h)
 	// superior) mantendo a propor��o com a janela de visualiza��o
 	if (largura <= altura)
 	{
-		gluOrtho2D (-40.0f, 40.0f, -40.0f*altura/largura, 40.0f*altura/largura);
-		windowXmin = -40.0f;
-		windowXmax =  40.0f;
-		windowYmin = -40.0f*altura/largura;
-		windowYmax = 40.0f*altura/largura;
+		gluOrtho2D (-200.0f, 200.0f, -200.0f*altura/largura, 200.0f*altura/largura);
 	}
 	else
 	{
-		gluOrtho2D (-40.0f*largura/altura, 40.0f*largura/altura, -40.0f, 40.0f);
-		windowXmin = -40.0f*largura/altura;
-		windowXmax =  40.0f*largura/altura;
-		windowYmin = -40.0f;
-		windowYmax =  40.0f;
+		gluOrtho2D (-200.0f*largura/altura, 200.0f*largura/altura, -200.0f, 200.0f);
 	}
 }
 
@@ -205,7 +318,7 @@ int main(int argc, char *argv[])
 	glutInitWindowSize(450,450);
 
 	// Cria a janela passando como argumento o t�tulo da mesma
-	glutCreateWindow("Animacao de uma casa");
+	glutCreateWindow("Sistema solar");
 
 	// Registra a fun��o callback de redesenho da janela de visualiza��o
 	glutDisplayFunc(DesenhaSistemaSolar);
