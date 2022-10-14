@@ -23,6 +23,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <iostream>
+using namespace std;
 
 // Vari�veis que guardam a transla��o que ser� aplicada
 // sobre a casinha
@@ -49,6 +51,9 @@ GLfloat ang1 = 0;
 GLsizei largura, altura;
 
 int win = 250;
+
+int anosTerra = 0;
+int ultimoAng = -1;
 
 bool stopAnimate = true;
 
@@ -288,10 +293,10 @@ void DesenhaMercurio() {
     }
     if(showMercury) {
         glPushMatrix();
-            glRotatef(ang1*4, 0.0f, 0.0f, 1.0f);
+            glRotatef(ang1*4, 0.0f, 0.0f, 1.0f); // translação
             glPushMatrix();
-                glTranslatef(30, 0, 0.0f);
-                glRotatef(ang1*5, 0.0f, 0.0f, 1.0f);
+                glTranslatef(30, 0, 0.0f); // manda pra órbita
+                glRotatef(ang1*5, 0.0f, 0.0f, 1.0f); // rotação
                 DesenhaAstro(5.0f, 1.0f, 0.0f, 0.5f);
             glPopMatrix();
         glPopMatrix();
@@ -384,7 +389,17 @@ void Anima(int value)
 	glutPostRedisplay();
 
 	if(stopAnimate)
-        glutTimerFunc(10,Anima, 1);
+        glutTimerFunc(10, Anima, 1);
+
+    int angF = (int) ang1;
+    if ((angF % 360) == 0) {
+
+        if (ultimoAng != angF) {
+            anosTerra += 1;
+            int ultimoAng = angF;
+            cout << anosTerra << " anos";
+        }
+    }
 }
 
 // Fun��o callback chamada para gerenciar eventos de teclas
