@@ -54,7 +54,7 @@ int win = 250;
 
 int exibeTempo = 1;
 
-bool stopAnimate = true;
+bool stopAnimate = false;
 
 bool showOrbit = true;
 
@@ -387,7 +387,7 @@ void Anima(int value)
 
 	glutPostRedisplay();
 
-	if(stopAnimate)
+	if(!stopAnimate)
         glutTimerFunc(10, Anima, 1);
 
     int angF = (int) ang1;
@@ -405,46 +405,47 @@ void Anima(int value)
 // Fun��o callback chamada para gerenciar eventos de teclas
 void Teclado (unsigned char key, int x, int y)
 {
-	if (key == 27)
-		exit(0);
-
-    if (key == 'p'){
-        stopAnimate = !stopAnimate;
-        if(stopAnimate){
-            glutTimerFunc(10, Anima, 1);
-        }
-    }
-
-    if (key == 'o'){
-        showOrbit = !showOrbit;
-    }
-    if (key == 'm'){
-        showMercury = !showMercury;
-    }
-    if (key == 'v'){
-        showVenus = !showVenus;
-    }
-    if (key == 't'){
-        showEarth = !showEarth;
-    }
-    if (key == 'a'){
-        showMars = !showMars;
-    }
-    if (key == 'j'){
-        showJupiter = !showJupiter;
-    }
-    if (key == 's'){
-        showSaturn = !showSaturn;
-    }
-    if (key == 'u'){
-        showUranus = !showUranus;
-    }
-    if (key == 'n'){
-        showNeptune = !showNeptune;
-    }
-    if (key == 'x'){
-        showSun = !showSun;
-    }
+	switch (key) {
+	    case 27:
+            exit(0);
+            break;
+		case 'p':
+		    stopAnimate = !stopAnimate;
+            if(!stopAnimate){
+                glutTimerFunc(10, Anima, 1);
+            }
+            break;
+        case 'o':
+            showOrbit = !showOrbit;
+            break;
+        case 'm':
+            showMercury = !showMercury;
+            break;
+        case 'v':
+            showVenus = !showVenus;
+            break;
+        case 't':
+            showEarth = !showEarth;
+            break;
+        case 'a':
+            showMars = !showMars;
+            break;
+        case 'j':
+            showJupiter = !showJupiter;
+            break;
+        case 's':
+            showSaturn = !showSaturn;
+            break;
+        case 'u':
+            showUranus = !showUranus;
+            break;
+        case 'n':
+            showNeptune = !showNeptune;
+            break;
+        case 'x':
+            showSun = !showSun;
+            break;
+	}
 }
 
 // Fun��o respons�vel por inicializar par�metros e vari�veis
