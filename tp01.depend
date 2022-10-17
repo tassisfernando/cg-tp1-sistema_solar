@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1665779783 source:c:\users\dpcdti\workspace-pessoal\cefet\8_semestre\cg\trabalhos\tp01_sistema_solar\main.cpp
+1665781456 source:c:\users\dpcdti\workspace-pessoal\cefet\8_semestre\cg\trabalhos\tp01_sistema_solar\main.cpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
+	<iostream>
 
 1426360528 c:\program files\codeblocks\mingw\x86_64-w64-mingw32\include\gl\glut.h
 	"freeglut_std.h"
