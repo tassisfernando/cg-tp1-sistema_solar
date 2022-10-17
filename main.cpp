@@ -52,7 +52,7 @@ GLsizei largura, altura;
 
 int win = 250;
 
-int ultimoAng = -1;
+int exibeTempo = 1;
 
 bool stopAnimate = true;
 
@@ -393,9 +393,11 @@ void Anima(int value)
     int angF = (int) ang1;
     if ((angF % 360) == 0) {
 
-        if (ultimoAng != angF) {
-            int ultimoAng = angF;
+        if (exibeTempo == 1) {
             cout << "Tempo da Terra: " << angF / 360 << " anos\n";
+            exibeTempo = 0;
+        } else {
+            exibeTempo = 1;
         }
     }
 }
