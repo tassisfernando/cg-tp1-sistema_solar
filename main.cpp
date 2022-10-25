@@ -23,6 +23,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <iostream>
+using namespace std;
 
 // Vari�veis que guardam a transla��o que ser� aplicada
 // sobre a casinha
@@ -50,7 +52,9 @@ GLsizei largura, altura;
 
 int win = 250;
 
-bool stopAnimate = true;
+int exibeTempo = 1;
+
+bool stopAnimate = false;
 
 bool showOrbit = true;
 
@@ -288,10 +292,10 @@ void DesenhaMercurio() {
     }
     if(showMercury) {
         glPushMatrix();
-            glRotatef(ang1*4, 0.0f, 0.0f, 1.0f);
+            glRotatef(ang1*4, 0.0f, 0.0f, 1.0f); // translação
             glPushMatrix();
-                glTranslatef(30, 0, 0.0f);
-                glRotatef(ang1*5, 0.0f, 0.0f, 1.0f);
+                glTranslatef(30, 0, 0.0f); // manda pra órbita
+                glRotatef(ang1*5, 0.0f, 0.0f, 1.0f); // rotação
                 DesenhaAstro(5.0f, 1.0f, 0.0f, 0.5f);
             glPopMatrix();
         glPopMatrix();
@@ -383,53 +387,65 @@ void Anima(int value)
 
 	glutPostRedisplay();
 
-	if(stopAnimate)
-        glutTimerFunc(10,Anima, 1);
+	if(!stopAnimate)
+        glutTimerFunc(10, Anima, 1);
+
+    int angF = (int) ang1;
+    if ((angF % 360) == 0) {
+
+        if (exibeTempo == 1) {
+            cout << "Tempo da Terra: " << angF / 360 << " anos\n";
+            exibeTempo = 0;
+        } else {
+            exibeTempo = 1;
+        }
+    }
 }
 
 // Fun��o callback chamada para gerenciar eventos de teclas
 void Teclado (unsigned char key, int x, int y)
 {
-	if (key == 27)
-		exit(0);
-
-    if (key == 'p'){
-        stopAnimate = !stopAnimate;
-        if(stopAnimate){
-            glutTimerFunc(10, Anima, 1);
-        }
-    }
-
-    if (key == 'o'){
-        showOrbit = !showOrbit;
-    }
-    if (key == 'm'){
-        showMercury = !showMercury;
-    }
-    if (key == 'v'){
-        showVenus = !showVenus;
-    }
-    if (key == 't'){
-        showEarth = !showEarth;
-    }
-    if (key == 'a'){
-        showMars = !showMars;
-    }
-    if (key == 'j'){
-        showJupiter = !showJupiter;
-    }
-    if (key == 's'){
-        showSaturn = !showSaturn;
-    }
-    if (key == 'u'){
-        showUranus = !showUranus;
-    }
-    if (key == 'n'){
-        showNeptune = !showNeptune;
-    }
-    if (key == 'x'){
-        showSun = !showSun;
-    }
+	switch (key) {
+	    case 27:
+            exit(0);
+            break;
+		case 'p':
+		    stopAnimate = !stopAnimate;
+            if(!stopAnimate){
+                glutTimerFunc(10, Anima, 1);
+            }
+            break;
+        case 'o':
+            showOrbit = !showOrbit;
+            break;
+        case 'm':
+            showMercury = !showMercury;
+            break;
+        case 'v':
+            showVenus = !showVenus;
+            break;
+        case 't':
+            showEarth = !showEarth;
+            break;
+        case 'a':
+            showMars = !showMars;
+            break;
+        case 'j':
+            showJupiter = !showJupiter;
+            break;
+        case 's':
+            showSaturn = !showSaturn;
+            break;
+        case 'u':
+            showUranus = !showUranus;
+            break;
+        case 'n':
+            showNeptune = !showNeptune;
+            break;
+        case 'x':
+            showSun = !showSun;
+            break;
+	}
 }
 
 // Fun��o respons�vel por inicializar par�metros e vari�veis
